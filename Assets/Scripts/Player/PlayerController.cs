@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     public float speed = 1f;
     public string TagToCheckEnemy = "Enemy";
+    public string TagToCheckEndLine = "EndLine";
 
     public GameObject endScreen;
 
@@ -42,14 +43,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void EndGame()
+    private void OnTriggerEnter(Collider other)
     {
-        _canRun = false;
-        endScreen.SetActive(true);
+        if(other.transform.tag == TagToCheckEndLine)
+        {
+            EndGame();
+        }
     }
 
     public void StartToRun()
     {
         _canRun = true;
     }
+    private void EndGame()
+    {
+        _canRun = false;
+        endScreen.SetActive(true);
+    }
+
 }
