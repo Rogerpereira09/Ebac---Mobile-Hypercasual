@@ -22,6 +22,10 @@ public class PlayerController : MonoBehaviour
     private bool _canRun;
 
 
+    private void Start()
+    {
+        StartToRun();
+    }
 
     void Update()
     {
