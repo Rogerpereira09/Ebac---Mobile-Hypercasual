@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - EndLine
+  - CoinsCollector
   layers:
   - Default
   - TransparentFX
