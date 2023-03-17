@@ -22,7 +22,7 @@ public class ItemCollectableBase : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if(collision.transform.CompareTag(compareTag))
+        if (collision.transform.CompareTag(compareTag))
         {
             Collect();
         }
@@ -30,21 +30,25 @@ public class ItemCollectableBase : MonoBehaviour
 
     protected virtual void Collect()
     {
-        if (graphicItem != null) graphicItem.SetActive(false);
-        Invoke("HideObject", timeToHide);
+        HideItens();
         OnCollect();
-        
     }
 
     private void HideObject()
     {
         gameObject.SetActive(false);
     }
-    
+
     protected virtual void OnCollect()
     {
         if (ParticleSystem != null) ParticleSystem.Play();
         if (audioSource != null) audioSource.Play();
     }
 
+    protected virtual void HideItens()
+    {
+        if (graphicItem != null) graphicItem.SetActive(false);
+        Invoke("HideObject", timeToHide);
+    }
+        
 }
