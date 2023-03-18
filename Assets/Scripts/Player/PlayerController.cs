@@ -25,14 +25,18 @@ public class PlayerController : Singleton<PlayerController>
     [Header("Text")]
     public TextMeshPro uiTextPowerUp;
 
-    [Header("Text")]
+    [Header("Coin Collector")]
     public GameObject coinsCollector;
+
+    [Header("Animation")]
+    public AnimatorManager animatorManager;
 
     //privates
     private Vector3 _pos;
     private bool _canRun;
     private float _currentSpeed;
     private Vector3 _startPosition;
+    private float _baseSpeedtoAnimation = 7;
 
 
     private void Start()
@@ -58,7 +62,11 @@ public class PlayerController : Singleton<PlayerController>
     {
         if(collision.transform.tag == TagToCheckEnemy)
         {
-            if(!invincible) EndGame();
+            if(!invincible)
+            {
+                MoveBack();
+                EndGame(AnimatorManager.AnimationType.DEAD);
+            }
         }
     }
 
@@ -70,17 +78,21 @@ public class PlayerController : Singleton<PlayerController>
         }
     }
 
-
+    private void MoveBack()
+    {
+        transform.DOMoveZ(-1f, .3f).SetRelative();
+    }
     public void StartToRun()
     {
-       
         _canRun = true;
+        animatorManager.Play(AnimatorManager.AnimationType.RUN, _currentSpeed / _baseSpeedtoAnimation);
     }
 
-    private void EndGame()
+    private void EndGame(AnimatorManager.AnimationType animationType = AnimatorManager.AnimationType.IDLE)
     {
         _canRun = false;
         endScreen.SetActive(true);
+        animatorManager.Play(animationType);
     }
 
     #region POWER UPS
