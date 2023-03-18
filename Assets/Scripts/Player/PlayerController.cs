@@ -41,8 +41,8 @@ public class PlayerController : Singleton<PlayerController>
 
     private void Start()
     {
-       StartToRun();
         ResetSpeed();
+       StartToRun();
         _startPosition = transform.position;
     }
 
