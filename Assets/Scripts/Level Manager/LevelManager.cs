@@ -7,19 +7,102 @@ public class LevelManager : MonoBehaviour
     //Publics
     public Transform container;
     public List<GameObject> levels;
+    public float timeBetweenPieces = .3f;
 
+    [Header("Pieces")]
+    public List<LevelPieceBase> levelPiecesStart;
+    public List<LevelPieceBase> levelPieces;
+    public List<LevelPieceBase> levelPiecesEnd;
+    public int piecesStartNumber = 3;
+    public int piecesNumber = 5;
+    public int piecesEndNumber = 1;
 
     //privates
-   [SerializeField] private int _index;
+    [SerializeField] private int _index;
+    private GameObject _currentLevel;
 
+    private List<LevelPieceBase> _spawnedPieces;
     public void Awake()
     {
-        SpawnLevel();
+        //SpawnNextLevel();
+        CreateLevelPieces();
     }
 
-    private void SpawnLevel()
+    private void SpawnNextLevel()
     {
-        var currentLevel = Instantiate(levels[_index], container);
-        currentLevel.transform.localPosition = Vector3.zero;
+        if (_currentLevel != null)
+        {
+            Destroy(_currentLevel);
+            _index++;
+            if (_index >= levels.Count)
+            {
+                ResetLevelIndex();
+            }
+        }
+        _currentLevel = Instantiate(levels[_index], container);
+        _currentLevel.transform.localPosition = Vector3.zero;
     }
+
+    private void ResetLevelIndex()
+    {
+        _index = 0;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            SpawnNextLevel();
+        }
+    }
+    #region
+
+    private void CreateLevelPieces()
+    {
+        _spawnedPieces = new List<LevelPieceBase>();
+        for (int i = 0; i < piecesStartNumber; i++)
+        {
+            CreateLevelPiece(levelPiecesStart);
+        }
+        for (int i = 0; i < piecesNumber; i++)
+        {
+            CreateLevelPiece(levelPieces);
+        }
+
+        for (int i = 0; i < piecesEndNumber; i++)
+        {
+            CreateLevelPiece(levelPiecesEnd);
+        }
+        // StartCoroutine(CreateLevelPiecesCorroutine());
+    }
+    private void CreateLevelPiece(List<LevelPieceBase> list)
+    {
+        var piece = list[Random.Range(0, list.Count)];
+        var spawnedPiece = Instantiate(piece, container);
+
+        if (_spawnedPieces.Count > 0)
+        {
+            var lastPiece = _spawnedPieces[_spawnedPieces.Count - 1];
+            spawnedPiece.transform.position = lastPiece.endPiece.position;
+        }
+
+        _spawnedPieces.Add(spawnedPiece);
+
+
+    }
+
+
+    IEnumerator CreateLevelPiecesCorroutine()
+    {
+        _spawnedPieces = new List<LevelPieceBase>();
+        for (int i = 0; i < piecesNumber; i++)
+        {
+            CreateLevelPiece(levelPieces);
+            yield return new WaitForSeconds(timeBetweenPieces);
+        }
+
+
+        #endregion
+    }
+
 }

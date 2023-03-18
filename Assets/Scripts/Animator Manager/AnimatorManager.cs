@@ -33,7 +33,7 @@ public class AnimatorManager : MonoBehaviour
         {
             Play(AnimationType.RUN);
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKeyDown(KeyCode.M))
             {
             Play(AnimationType.DEAD);
         }
