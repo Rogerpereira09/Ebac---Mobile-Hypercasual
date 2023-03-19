@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class LevelManager : MonoBehaviour
 {
@@ -27,6 +28,11 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private List<LevelPieceBase> _spawnedPieces = new List<LevelPieceBase>();
     private LevelPieceBaseSetup _currentSetup;
 
+
+    [Header("Animations")]
+    public float ScaleDuration = .2f;
+    public float scaleTimeBetweenPieces = .1f;
+    public Ease ease = Ease.OutBack;
     
     public void Awake()
     {
@@ -96,8 +102,26 @@ public class LevelManager : MonoBehaviour
 
         ColorManager.Instance.ChangeColorByType(_currentSetup.artType);
 
+        StartCoroutine(ScalePiecesByTime());
         // StartCoroutine(CreateLevelPiecesCorroutine());
     }
+
+    IEnumerator ScalePiecesByTime()
+    {
+        foreach(var p in _spawnedPieces)
+        {
+            p.transform.localScale = Vector3.zero;
+        }
+        yield return null;
+
+        for(int  i = 0; i < _spawnedPieces.Count; i++)
+        {
+            _spawnedPieces[i].transform.DOScale(1, ScaleDuration).SetEase(ease);
+            yield return new WaitForSeconds(scaleTimeBetweenPieces);
+
+        }
+    }
+
     private void CreateLevelPiece(List<LevelPieceBase> list)
     {
         var piece = list[Random.Range(0, list.Count)];

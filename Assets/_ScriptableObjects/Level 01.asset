@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770760b792217a543a28f8544fb5f16f, type: 3}
   m_Name: Level 01
   m_EditorClassIdentifier: 
+  artType: 1
   levelPiecesStart:
-  - {fileID: 0}
+  - {fileID: 8395785139328059741, guid: 5ff0110ff2deeda4eb1e83a6271e129d, type: 3}
   levelPieces:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8395785139328059741, guid: 19ae7aa3bddb0ed4faec00ed924cbc82, type: 3}
+  - {fileID: 2178497575104358813, guid: a53fb08650bb31e4e843f28ab5f6ba97, type: 3}
   levelPiecesEnd:
-  - {fileID: 0}
+  - {fileID: 8395785139328059741, guid: fb5b283c8218f774db211a4d07c5fef6, type: 3}
   piecesStartNumber: 3
   piecesNumber: 5
   piecesEndNumber: 1
