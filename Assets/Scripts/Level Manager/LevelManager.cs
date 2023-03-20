@@ -34,10 +34,11 @@ public class LevelManager : MonoBehaviour
     public float scaleTimeBetweenPieces = .1f;
     public Ease ease = Ease.OutBack;
     
-    public void Awake()
+    public void Start()
     {
         //SpawnNextLevel();
         CreateLevelPieces();
+        
     }
 
     private void SpawnNextLevel()
