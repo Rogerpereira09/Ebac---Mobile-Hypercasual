@@ -20,6 +20,6 @@ MonoBehaviour:
   - {fileID: 2178497575104358813, guid: a53fb08650bb31e4e843f28ab5f6ba97, type: 3}
   levelPiecesEnd:
   - {fileID: 8395785139328059741, guid: fb5b283c8218f774db211a4d07c5fef6, type: 3}
-  piecesStartNumber: 3
-  piecesNumber: 5
+  piecesStartNumber: 2
+  piecesNumber: 7
   piecesEndNumber: 1
