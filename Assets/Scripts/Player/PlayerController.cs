@@ -31,6 +31,8 @@ public class PlayerController : Singleton<PlayerController>
     [Header("Animation")]
     public AnimatorManager animatorManager;
 
+    [SerializeField] private BounceHelper _bounceHelper;
+
     //privates
     private Vector3 _pos;
     private bool _canRun;
@@ -44,6 +46,12 @@ public class PlayerController : Singleton<PlayerController>
         ResetSpeed();
        StartToRun();
         _startPosition = transform.position;
+    }
+
+    public void Bounce()
+    {
+        if(_bounceHelper != null)
+        _bounceHelper.Bounce();
     }
 
     void Update()

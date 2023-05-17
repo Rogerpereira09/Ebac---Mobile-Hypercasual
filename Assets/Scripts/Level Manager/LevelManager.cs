@@ -105,6 +105,7 @@ public class LevelManager : MonoBehaviour
 
         StartCoroutine(ScalePiecesByTime());
         // StartCoroutine(CreateLevelPiecesCorroutine());
+        
     }
 
     IEnumerator ScalePiecesByTime()
@@ -121,6 +122,7 @@ public class LevelManager : MonoBehaviour
             yield return new WaitForSeconds(scaleTimeBetweenPieces);
 
         }
+        CollectablesAnimationManager.Instance.StartAnimations();
     }
 
     private void CreateLevelPiece(List<LevelPieceBase> list)
