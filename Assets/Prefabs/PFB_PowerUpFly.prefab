@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f932cb1c84c3ae648a80f4bf6abb5d5c, type: 2}
+  - {fileID: 2100000, guid: e65f13c2316479447b93ee83564e3074, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -158,5 +158,7 @@ MonoBehaviour:
   timeToHide: 3
   graphicItem: {fileID: 2416113265374558836}
   audioSource: {fileID: 0}
-  duration: 0
+  duration: 1
   amountHeight: 5
+  animationDuration: 0.1
+  ease: 27

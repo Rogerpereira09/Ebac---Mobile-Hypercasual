@@ -9,7 +9,7 @@ public class PowerUpInvincible : PowerUpBase
     protected override void StartPowerUp()
     {
         base.StartPowerUp();
-        PlayerController.Instance.SetPowerUptext("Invincible");
+        PlayerController.Instance.SetPowerUptext("You found a letter!");
         PlayerController.Instance.SetInvincible();
     }
 

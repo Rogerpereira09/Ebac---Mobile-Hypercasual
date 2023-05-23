@@ -105,9 +105,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7720893260134406740}
   - component: {fileID: 7720893260134406737}
-  - component: {fileID: 7720893260134406736}
+  - component: {fileID: 3801286651045105935}
   m_Layer: 0
-  m_Name: PFB_PowerUpSpeed
+  m_Name: PFB_PowerUpInvincible
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,7 +141,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7720893260134406736
+--- !u!114 &3801286651045105935
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,13 +150,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7720893260134406739}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce098b86bd225a447b8c5d51d1fc8f1c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f33d7f90baa72f448241fb2b5b652ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   compareTag: Player
   ParticleSystem: {fileID: 0}
   timeToHide: 3
-  graphicItem: {fileID: 3360177377475993247}
+  graphicItem: {fileID: 0}
   audioSource: {fileID: 0}
-  duration: 3
-  amountToSpeed: 10
+  duration: 5
