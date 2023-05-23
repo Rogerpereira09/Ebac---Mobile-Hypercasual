@@ -11,6 +11,7 @@ public class PowerUpInvincible : PowerUpBase
         base.StartPowerUp();
         PlayerController.Instance.SetPowerUptext("You found a letter!");
         PlayerController.Instance.SetInvincible();
+        PlayerController.Instance.Bounce();
     }
 
     protected override void EndPowerUp()

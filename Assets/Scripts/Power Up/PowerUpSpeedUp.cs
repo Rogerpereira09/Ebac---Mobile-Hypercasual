@@ -12,6 +12,7 @@ public class PowerUpSpeedUp : PowerUpBase
         base.StartPowerUp();
         PlayerController.Instance.PowerUpSpeedUp(amountToSpeed);
         PlayerController.Instance.SetPowerUptext("You found a letter!");
+        PlayerController.Instance.Bounce();
     }
 
     protected override void EndPowerUp()
