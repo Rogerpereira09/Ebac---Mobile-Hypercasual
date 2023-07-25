@@ -11,7 +11,8 @@ namespace Screens
     {
         Panel,
         Info_Panel,
-        Shop
+        Shop,
+        Settings
     }
     public class ScreenBase : MonoBehaviour
     {
