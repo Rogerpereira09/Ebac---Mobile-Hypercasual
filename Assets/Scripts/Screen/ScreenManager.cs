@@ -8,6 +8,7 @@ namespace Screens
     public class ScreenManager : Singleton<ScreenManager>
     {
         public List<ScreenBase> screenBases;
+        public List<GameObject> objs;
 
         public ScreenType startScreen = ScreenType.Panel;
 
@@ -17,6 +18,7 @@ namespace Screens
 
         private void Start()
         {
+            objs.GetRandom();
             HideAll();
             ShowByType(startScreen);
         }
